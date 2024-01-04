@@ -1,0 +1,11 @@
+{
+  "name": "drawing_board",
+  "version": "1.0.0",
+  "description": "online drawing board",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "margaritabizhan",
+  "license": "ISC"
+}
