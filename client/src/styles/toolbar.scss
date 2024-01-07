@@ -7,5 +7,56 @@
   align-items: center;
   position: absolute;
   width: 100%;
-  box-shadow: 0 2px 4px rgb(124, 115, 121);
+  box-shadow: 0 3px 5px rgb(124, 115, 121);
+  z-index: 2;
+
+  &-btn {
+    height: 35px;
+    width: 35px;
+    border: none;
+    outline: none; 
+    cursor: pointer;
+    background-size: cover;
+    margin-left: 10px;
+  }
+  .brush {
+    background: url(../assets/img/brush.png) no-repeat center center;
+  }
+  .rect {
+    background: url(../assets/img/rect.png) no-repeat center center;
+    height: 25px;
+    width: 25px;
+  }
+  .circle {
+    background: url(../assets/img/circle.png) no-repeat center center;
+  }
+  .eraser {
+    background: url(../assets/img/eraser.png) no-repeat center center;
+  }
+  .line {
+    background: url(../assets/img/line.png) no-repeat center center;
+  }
+  .undo {
+    background: url(../assets/img/undo.png) no-repeat center center;
+    margin-left: auto;
+  }
+  .redo {
+    background: url(../assets/img/redo.png) no-repeat center center;
+  }
+  .save {
+    background: url(../assets/img/save.png) no-repeat center center;
+    margin-right: 10px;
+  }
 }
+
+.setting-bar {
+  height: $toolbar-height;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  box-shadow: 0 3px 5px rgb(124, 115, 121);
+  top: $toolbar-height;
+}
+

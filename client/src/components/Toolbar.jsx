@@ -4,6 +4,15 @@ import '../styles/toolbar.scss';
 const Toolbar = () => {
   return (
     <div className="toolbar">
+      <button className="toolbar-btn brush"></button>
+      <button className="toolbar-btn rect"></button>
+      <button className="toolbar-btn circle"></button>
+      <button className="toolbar-btn eraser"></button>
+      <button className="toolbar-btn line"></button>
+      <input type="color" style={{marginLeft:10}} />
+      <button className="toolbar-btn undo"></button>
+      <button className="toolbar-btn redo"></button>
+      <button className="toolbar-btn save"></button>
     </div>
   );
 }
