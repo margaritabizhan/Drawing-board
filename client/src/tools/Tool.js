@@ -5,6 +5,18 @@ export default class Tool {
     this.destroyEvents();
   };
 
+  set fillColor(color) {
+    this.ctx.fillStyle = color;
+  };
+
+  set lineThickness(thickness) {
+    this.ctx.lineWidth = thickness;
+  };
+
+  set strokeColor(color) {
+    this.ctx.strokeStyle = color;
+  };
+
   destroyEvents() {
     this.canvas.onmousemove = null;
     this.canvas.onmousedown = null;
