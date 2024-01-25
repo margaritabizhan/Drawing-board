@@ -1,4 +1,5 @@
 import Tool from './Tool';
+import toolState from '../store/toolState';
 
 export default class Brush extends Tool {
   constructor(canvas) {

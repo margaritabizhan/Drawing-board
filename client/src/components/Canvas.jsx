@@ -6,7 +6,11 @@ import toolState from '../store/toolState';
 import Brush from '../tools/Brush';
 
 const Canvas = observer(() => {
-  const canvasRef = useRef()
+  const canvasRef = useRef();
+
+  const mouseDownHandler = () => {
+    canvasState.pushToUndo(canvasRef.current.toDataURL())
+  };
 
   useEffect(() => {
     canvasState.setCanvas(canvasRef.current);
@@ -15,7 +19,9 @@ const Canvas = observer(() => {
 
   return (
     <div className="canvas">
-      <canvas width={600} height={400} ref={canvasRef}></canvas>
+      <canvas 
+        onMouseDown={() => mouseDownHandler()}
+        width={600} height={400} ref={canvasRef}></canvas>
     </div>
   );
 });
