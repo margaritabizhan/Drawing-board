@@ -10,14 +10,14 @@ This project is a web-based drawing application built using HTML canvas. It allo
 <b>You can preview it here:</b>
 https://drawing-board-margaritabizhans-projects.vercel.app/
 
-## More Features Coming
+## More Features Are In Progress
 - **Collaboration Tools**: web sockets integration to enable real-time collaboration. This will allow multiple users to draw on the same canvas simultaneously, opening up new possibilities for cooperative drawing sessions and interactive projects.
 - **Save Drawings**: Implementing the ability to save and share drawings is also on our roadmap.
 
 ## Installation
 To set up the application locally for development or testing, follow these steps:
 
-1. **Fork and Clone the Repository**: Start by forking this repository to your GitHub account, then clone your forked repository to your local machine:
+1. **Fork and Clone the Repository**: Start by forking master branch of this repository to your GitHub account, then clone your forked repository to your local machine:
    <code> git clone https://github.com/margaritabizhan/Drawing-board.git</code>
 2. **Start the Client**:
 - Navigate to the client directory within the cloned repository:
