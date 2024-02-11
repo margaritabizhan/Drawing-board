@@ -1,6 +1,7 @@
 ## Description
 🎨🎨🎨</br>
 This project is a web-based drawing application built using HTML canvas. It allows users to freely draw on a digital canvas, providing a seamless and intuitive drawing experience right in their web browser. The application includes basic drawing tools such as drawing, erasing, undoing, and redoing actions, making it suitable for users of all ages and skill levels.</br>
+🎨🎨🎨</br>
 
 ## Tek Stack
 ![Screenshot 2024-02-10 at 1 15 40 PM](https://github.com/margaritabizhan/Drawing-board/assets/140859521/3fc7cf70-f024-4d82-9382-8980a9b0d8ce)
