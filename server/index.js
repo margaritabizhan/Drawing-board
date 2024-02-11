@@ -33,7 +33,7 @@ const connectionHandler = (ws, msg) => {
 
 const broadcastMessage = (ws, msg) => {
   expressWs.getWss().clients.forEach(client => {
-    if(client.id !== msg.id) {
+    if(client.id === msg.id) {
       client.send(JSON.stringify(msg));
     };
   });

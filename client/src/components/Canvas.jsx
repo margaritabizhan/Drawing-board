@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { useParams } from 'react-router-dom';
+import Rect from '../tools/Rect';
 
 const Canvas = observer(() => {
   const canvasRef = useRef();
@@ -17,10 +18,9 @@ const Canvas = observer(() => {
   //Get the id from the url
   const params = useParams();
 
-  //Initialize the canvas and brush as default tool
+  //Initialize the canvas
   useEffect(() => {
     canvasState.setCanvas(canvasRef.current);
-    toolState.setTool(new Brush(canvasRef.current))
   }, []);
   
   useEffect(() => {
@@ -28,6 +28,7 @@ const Canvas = observer(() => {
       const socket = new WebSocket('ws://localhost:3001');
       canvasState.setSocket(socket);
       canvasState.setUserID(params.id);
+      toolState.setTool(new Brush(canvasRef.current, socket, params.id));
       
       //Connect to the server with id and username
       socket.onopen = () => {
@@ -59,7 +60,22 @@ const Canvas = observer(() => {
   };
 
   const drawHandler = (msg) => {
+    const shape = msg.shape;
+    const ctx = canvasRef.current.getContext('2d');
     
+    switch(shape.type) {
+      case 'brush':
+        Brush.draw(ctx, shape.x, shape.y);
+        break;
+
+        case 'finish-brush':
+          ctx.beginPath();
+          break;
+
+        case 'rect':
+          Rect.staticDraw(ctx, shape.x, shape.y, shape.width, shape.height, shape.color);
+          break;
+    };
   };
 
   const mouseDownHandler = () => {
