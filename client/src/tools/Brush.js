@@ -51,6 +51,5 @@ export default class Brush extends Tool {
     ctx.lineWidth = thickness;
     ctx.lineTo(x, y);
     ctx.stroke();
-    console.log('drawing with brush');
     };
 };

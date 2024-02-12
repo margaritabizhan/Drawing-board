@@ -11,6 +11,7 @@ import { useParams } from 'react-router-dom';
 import Rect from '../tools/Rect';
 import Circle from '../tools/Circle';
 import Line from '../tools/Line';
+import Eraser from '../tools/Eraser';
 
 const Canvas = observer(() => {
   const canvasRef = useRef();
@@ -43,13 +44,17 @@ const Canvas = observer(() => {
       //Receive the data from the server
       socket.onmessage = (event) => {
         let msg = JSON.parse(event.data);
-        console.log(msg);
         switch(msg.method) {
           case 'new-connection':
             console.log(`User ${msg.username} connected`);
             break;
           case 'draw':
             drawHandler(msg);
+            break;
+          
+          case 'clearAll':
+            const ctx = canvasState.canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvasState.canvas.width, canvasState.canvas.height);
             break;
         }
       };
@@ -61,6 +66,7 @@ const Canvas = observer(() => {
     setModal(false);
   };
 
+  //Draw the shapes received from the server
   const drawHandler = (msg) => {
     const shape = msg.shape;
     const ctx = canvasRef.current.getContext('2d');
@@ -80,9 +86,19 @@ const Canvas = observer(() => {
 
         case 'circle':
           Circle.staticDraw(ctx, shape.x, shape.y, shape.radius, shape.color, shape.outlineColor, shape.thickness);
+          break;
 
         case 'line':
           Line.staticDraw(ctx, shape.x, shape.y, shape.x2, shape.y2, shape.color, shape.thickness);
+          break;
+
+        case 'eraser':
+          Eraser.draw(ctx, shape.x, shape.y, shape.thickness);
+          break;
+
+        case 'finish-eraser':
+          ctx.beginPath();
+          break;
     };
   };
 

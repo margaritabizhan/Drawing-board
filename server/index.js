@@ -17,9 +17,23 @@ app.ws('/', (ws, req) => {
       case 'draw':
         broadcastMessage(ws, messageObject);
         break
+      
+      case 'clearAll':
+        console.log(messageObject);
+        broadcastMessage(ws, messageObject);
+        break;
     };
   });
 });
+
+// app.post('/image', (req, res) => {
+//   try {
+    
+//   }catch (e) {
+//     console.log(e);
+//     return res.status(500).json({message: 'Server error'});
+//   }
+// });
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
@@ -34,6 +48,7 @@ const connectionHandler = (ws, msg) => {
 const broadcastMessage = (ws, msg) => {
   expressWs.getWss().clients.forEach(client => {
     if(client.id === msg.id) {
+      console.log(msg);
       client.send(JSON.stringify(msg));
     };
   });

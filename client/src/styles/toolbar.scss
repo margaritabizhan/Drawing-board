@@ -36,6 +36,7 @@
   .line {
     background: url(../assets/img/line.png) no-repeat center center;
   }
+
   .undo {
     background: url(../assets/img/undo.png) no-repeat center center;
     margin-left: auto;
@@ -47,6 +48,10 @@
     background: url(../assets/img/save.png) no-repeat center center;
     margin-right: 10px;
   }
+};
+
+.clearall {
+  margin: 20px;
 }
 
 .setting-bar {

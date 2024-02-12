@@ -58,7 +58,6 @@ export default class Line extends Tool {
       this.ctx.lineTo(xEnd, yEnd);
       this.ctx.fill();
       this.ctx.stroke();
-      console.log('drawing a line');
     };
   };
 
