@@ -1,8 +1,8 @@
 import Tool from './Tool';
 
 export default class Circle extends Tool {
-  constructor(canvas) {
-    super(canvas);
+  constructor(canvas, socket, id) {
+    super(canvas, socket, id);
     this.listen()
   };
 
@@ -14,6 +14,19 @@ export default class Circle extends Tool {
 
   mouseUpHandler(e) {
     this.mouseDown = false;
+    this.socket.send(JSON.stringify({
+      method: 'draw',
+      id: this.id,
+      shape: {
+        type: 'circle',
+        x: this.startX,
+        y: this.startY,
+        radius: this.radius,
+        color: this.ctx.fillStyle,
+        outlineColor: this.ctx.strokeStyle,
+        thickness: this.ctx.lineWidth,
+      }
+    }));
   };
 
   mouseDownHandler(e) {
@@ -27,8 +40,8 @@ export default class Circle extends Tool {
   mouseMoveHandler(e) {
     if (this.mouseDown) {
       let currentX = e.pageX - e.target.offsetLeft;
-      let radius = Math.abs(currentX - this.startX);
-      this.draw(this.startX, this.startY, radius);
+      this.radius = Math.abs(currentX - this.startX);
+      this.draw(this.startX, this.startY, this.radius);
     };
   };
 
@@ -46,4 +59,14 @@ export default class Circle extends Tool {
       console.log('drawing with circle');
     };
   };
+
+  static staticDraw(ctx, x, y, r, color, outlineColor, thickness) {
+    ctx.fillStyle = color;
+    ctx.strokeStyle = outlineColor;
+    ctx.lineWidth = thickness;
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.stroke();
+  }
 };

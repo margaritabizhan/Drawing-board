@@ -9,6 +9,8 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { useParams } from 'react-router-dom';
 import Rect from '../tools/Rect';
+import Circle from '../tools/Circle';
+import Line from '../tools/Line';
 
 const Canvas = observer(() => {
   const canvasRef = useRef();
@@ -65,7 +67,7 @@ const Canvas = observer(() => {
     
     switch(shape.type) {
       case 'brush':
-        Brush.draw(ctx, shape.x, shape.y);
+        Brush.draw(ctx, shape.x, shape.y, shape.color, shape.thickness);
         break;
 
         case 'finish-brush':
@@ -73,8 +75,14 @@ const Canvas = observer(() => {
           break;
 
         case 'rect':
-          Rect.staticDraw(ctx, shape.x, shape.y, shape.width, shape.height, shape.color);
+          Rect.staticDraw(ctx, shape.x, shape.y, shape.width, shape.height, shape.color, shape.outlineColor, shape.thickness);
           break;
+
+        case 'circle':
+          Circle.staticDraw(ctx, shape.x, shape.y, shape.radius, shape.color, shape.outlineColor, shape.thickness);
+
+        case 'line':
+          Line.staticDraw(ctx, shape.x, shape.y, shape.x2, shape.y2, shape.color, shape.thickness);
     };
   };
 

@@ -1,5 +1,4 @@
 import Tool from './Tool';
-import toolState from '../store/toolState';
 
 export default class Brush extends Tool {
   constructor(canvas, socket, id) {
@@ -40,12 +39,16 @@ export default class Brush extends Tool {
           type: 'brush',
           x: e.pageX - e.target.offsetLeft,
           y: e.pageY - e.target.offsetTop,
+          color: this.ctx.strokeStyle,
+          thickness: this.ctx.lineWidth,
         }
       }));
     };
   };
 
-  static draw(ctx, x, y) {
+  static draw(ctx, x, y, color, thickness) {
+    ctx.strokeStyle = color;
+    ctx.lineWidth = thickness;
     ctx.lineTo(x, y);
     ctx.stroke();
     console.log('drawing with brush');

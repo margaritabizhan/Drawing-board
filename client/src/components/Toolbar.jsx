@@ -19,9 +19,9 @@ const Toolbar = () => {
     <div className="toolbar">
       <button className="toolbar-btn brush" onClick={() => toolState.setTool(new Brush(canvasState.canvas, canvasState.socket, canvasState.userID))}></button>
       <button className="toolbar-btn rect" onClick={() => toolState.setTool(new Rect(canvasState.canvas, canvasState.socket, canvasState.userID))}></button>
-      <button className="toolbar-btn circle" onClick={() => toolState.setTool(new Circle(canvasState.canvas))}></button>
+      <button className="toolbar-btn circle" onClick={() => toolState.setTool(new Circle(canvasState.canvas, canvasState.socket, canvasState.userID))}></button>
       <button className="toolbar-btn eraser"onClick={() => toolState.setTool(new Eraser(canvasState.canvas))}></button>
-      <button className="toolbar-btn line"onClick={() => toolState.setTool(new Line(canvasState.canvas))}></button>
+      <button className="toolbar-btn line"onClick={() => toolState.setTool(new Line(canvasState.canvas, canvasState.socket, canvasState.userID))}></button>
       <input type="color" style={{marginLeft:10}} onChange={changeFillColor}/>
       <button className="toolbar-btn undo" onClick={() => canvasState.undo()}></button>
       <button className="toolbar-btn redo" onClick={() => canvasState.redo()}></button>
