@@ -1,5 +1,4 @@
 import Tool from './Tool';
-import toolState from '../store/toolState';
 
 export default class Brush extends Tool {
   constructor(canvas) {
@@ -25,11 +24,11 @@ export default class Brush extends Tool {
 
   mouseMoveHandler(e) {
     if (this.mouseDown) {
-      this.draw(e.pageX - e.target.offsetLeft, e.pageY - e.target.offsetTop)
+      this.draw(e.pageX - e.target.offsetLeft, e.pageY - e.target.offsetTop,)
     };
   };
 
-  draw(x, y) {
+  draw(x, y, color) {
     this.ctx.lineTo(x, y);
     this.ctx.stroke();
     console.log('drawing with brush');
