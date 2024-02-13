@@ -16,8 +16,7 @@ Welcome to Drawing Board, your online sketchpad that turns your browser into a d
 ## 🚀 Preview
 https://github.com/margaritabizhan/Drawing-board/assets/140859521/79ed841e-efc4-4487-b013-17bdf372bee7
 
-Give it a try here
-[CLICk⬅️](https://drawing-board-margaritabizhans-projects.vercel.app)
+Give it a try [here](https://drawing-board-margaritabizhans-projects.vercel.app)
 
 ## Installation
 To set up the application locally for development or testing, follow these steps:
